@@ -12,15 +12,15 @@ branch="$4"
 ssh_host="git@github.com:$name"
 repo_path="$repos_path/$name.git"
 
-mkdir -p "$output_dir"
+mkdir -p $output_dir
 shopt -s extglob
 rm -rf "$output_dir/!(node_modules)"
 
-if [ ! -d "$repo_path" ]; then
-  git init --bare "$repo_path"
+if [ ! -d $repo_path ]; then
+  git init --bare $repo_path
 fi
 
-cd "$repo_path"
+cd $repo_path
 
-git fetch "$ssh_host" "$branch:$branch" -f
-GIT_WORK_TREE="$output_dir" git checkout "$branch" -f
+git fetch $ssh_host "$branch:$branch" -f
+GIT_WORK_TREE=$output_dir git checkout $branch -f
