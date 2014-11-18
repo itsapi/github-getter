@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -ne 4 ]; then
+    echo "Usage: ./get.sh [repo-dir] [output-dir] [user]/[reponame] [branch]"
+    exit 1
+fi
+
 repos_path="$1"
 output_dir="$2"
 name="$3"
