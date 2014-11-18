@@ -23,5 +23,4 @@ fi
 cd $repo_path
 
 git fetch $ssh_host $branch:$branch -f
-export GIT_WORK_TREE=$output_dir
-git checkout $branch -f
+GIT_WORK_TREE=$output_dir git checkout $branch -f
