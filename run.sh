@@ -1,6 +1,7 @@
 #!/bin/bash
 
 name="$1"
+branch="$2"
 ssh_host="git@github.com:$name"
 path="/home/git/post-receive/processing"
 repo="/home/git/$name.git"
@@ -16,9 +17,9 @@ fi
 
 cd $repo
 
-git fetch $ssh_host master:master -f
+git fetch $ssh_host $branch:$branch -f
 export GIT_WORK_TREE=$path
-git checkout -f
+git checkout $branch -f
 
 cd $path
 
