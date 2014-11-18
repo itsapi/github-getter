@@ -8,4 +8,4 @@ This program creates a repository in the directory specified in the config file,
 Usage
 -----
 
-    ./run.sh [user]/[reponame] [branch]
+    ./run.sh [repo-dir] [output-dir] [user]/[reponame] [branch]

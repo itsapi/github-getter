@@ -1,26 +1,25 @@
 #!/bin/bash
 
-name="$1"
-branch="$2"
+repos_path="$1"
+output_dir="$2"
+name="$3"
+branch="$4"
 ssh_host="git@github.com:$name"
-path="/home/git/post-receive/processing"
-repo="/home/git/$name.git"
+repo_path="$name.git"
 
-mkdir $path
+mkdir $output_dir
 shopt -s extglob
-rm -rf $path/!(node_modules)
+rm -rf $output_dir/!(node_modules)
 
-if [ ! -d $repo ]; then
-  mkdir -p $repo
-  git init --bare $repo
+cd $repos_path
+
+if [ ! -d $repo_path ]; then
+  mkdir -p $repo_path
+  git init --bare $repo_path
 fi
 
-cd $repo
+cd $repo_path
 
 git fetch $ssh_host $branch:$branch -f
-export GIT_WORK_TREE=$path
+export GIT_WORK_TREE=$output_dir
 git checkout $branch -f
-
-cd $path
-
-python3 ../main.py "$name"
