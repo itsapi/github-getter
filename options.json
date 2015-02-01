@@ -1,3 +1,8 @@
 {
-	"output": "/home/git/deploy/github-getter"
+	"output": "/home/git/deploy/github-getter",
+	"hosts": {
+		"oliverfaircliff": {
+			"output": "/opt/ghg"
+		}
+	}
 }
