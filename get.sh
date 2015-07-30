@@ -14,7 +14,7 @@ repo_path="$repos_path/$name.git"
 
 mkdir -p $output_dir
 shopt -s extglob
-rm -rf $output_dir/*
+rm -rf $output_dir/!(node_modules)
 
 if [ ! -d $repo_path ]; then
   git init --bare $repo_path
