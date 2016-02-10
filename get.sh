@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [ $# -ne 4 ]; then
-    echo "Usage: ./get.sh [repo-dir] [output-dir] [user]/[reponame] [branch]"
+if [ $# -ne 5 ] && [ $# -ne 4 ]; then
+    echo "Usage: ./get.sh [repo-dir] [output-dir] [user]/[reponame] [branch] [url]"
     exit 1
 fi
 
@@ -9,7 +9,15 @@ repos_path="$1"
 output_dir="$2"
 name="$3"
 branch="$4"
-ssh_host="git@github.com:$name"
+
+if [ -z "$5" ]; then
+	url="git@github.com"
+else
+	url="$5"
+fi
+echo $url
+
+ssh_host="$url:$name"
 repo_path="$repos_path/$name.git"
 
 mkdir -p $output_dir
