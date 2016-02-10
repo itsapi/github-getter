@@ -15,7 +15,6 @@ if [ -z "$5" ]; then
 else
 	url="$5"
 fi
-echo $url
 
 ssh_host="$url:$name"
 repo_path="$repos_path/$name.git"
